@@ -24,7 +24,10 @@ public class Produto implements Serializable {
 	private String nome;
 	private Double preco;
 
-	@JsonIgnore
+	@JsonIgnore //-> tambem funciona
+	//@JsonBackReference 
+	//Do outro lado, da associação, ja foram buscados os objetos
+	//então agora não busco mais.
 	@ManyToMany
 	@JoinTable(name = "PRODUTO_CATEGORIA", joinColumns = @JoinColumn(name = "produto_id"), inverseJoinColumns = @JoinColumn(name = "categoria_id"))
 	private List<Categoria> categorias = new ArrayList<>();
